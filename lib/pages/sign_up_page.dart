@@ -1,4 +1,7 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
   static const String id = 'sign_up_page';
@@ -8,13 +11,28 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  void fireToast(String massage) {
+    Fluttertoast.showToast(
+      msg: massage,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.blue,
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),
         child: Container(
-          height: MediaQuery.of(context).size.height,
+          height: MediaQuery
+              .of(context)
+              .size
+              .height,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
@@ -33,8 +51,11 @@ class _SignUpPageState extends State<SignUpPage> {
                 flex: 2,
                 child: Container(
                   // padding: EdgeInsets.
-                  width: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.symmetric(horizontal: 20,vertical: 50),
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 50),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.end,
@@ -59,7 +80,10 @@ class _SignUpPageState extends State<SignUpPage> {
               Expanded(
                 flex: 5,
                 child: Container(
-                  width: MediaQuery.of(context).size.width,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
                   decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
@@ -178,7 +202,9 @@ class _SignUpPageState extends State<SignUpPage> {
                             fontSize: 14,
                             fontWeight: FontWeight.bold),
                       ),
-                      const SizedBox(height: 25,),
+                      const SizedBox(
+                        height: 25,
+                      ),
 
                       //#facebook_github
                       Container(
@@ -194,14 +220,17 @@ class _SignUpPageState extends State<SignUpPage> {
                                 child: const Text(
                                   'Facebook',
                                   style: TextStyle(
-                                      fontSize: 14, fontWeight: FontWeight.bold),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 textColor: Colors.white,
                                 color: Colors.blue,
                                 shape: const StadiumBorder(),
                               ),
                             ),
-                            const SizedBox(width: 10,),
+                            const SizedBox(
+                              width: 10,
+                            ),
                             Expanded(
                               flex: 1,
                               child: MaterialButton(
@@ -210,14 +239,17 @@ class _SignUpPageState extends State<SignUpPage> {
                                 child: const Text(
                                   'Google',
                                   style: TextStyle(
-                                      fontSize: 14, fontWeight: FontWeight.bold),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 textColor: Colors.white,
                                 color: Colors.redAccent,
                                 shape: const StadiumBorder(),
                               ),
                             ),
-                            const SizedBox(width: 10,),
+                            const SizedBox(
+                              width: 10,
+                            ),
                             Expanded(
                               flex: 1,
                               child: MaterialButton(
@@ -226,7 +258,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                 child: const Text(
                                   'Apple',
                                   style: TextStyle(
-                                      fontSize: 14, fontWeight: FontWeight.bold),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 textColor: Colors.white,
                                 color: Colors.black,
@@ -235,6 +268,40 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                           ],
                         ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                color: Colors.white,
+                alignment: Alignment.bottomCenter,
+                child: RichText(
+                  text: TextSpan(
+                    text: "Best of the best",
+                    style: TextStyle(fontSize: 14,color: Colors.black),
+                    children: [
+                      TextSpan(
+                        text: " #pdp",
+                        style: TextStyle(
+                          color: Colors.blueAccent,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            fireToast("Hash tag #pdp");
+                          },
+                      ),
+                      TextSpan(
+                        text: " #academy",
+                        style: TextStyle(
+                          color: Colors.blueAccent,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            fireToast("Hash tag #academy");
+                          },
                       ),
                     ],
                   ),
